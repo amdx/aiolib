@@ -1,0 +1,1 @@
+../../../examples/USBSerial/USBSerial.ino
