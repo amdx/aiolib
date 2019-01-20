@@ -35,8 +35,6 @@ using namespace AIO;
 
 void setup()
 {
-    Serial.begin(115200);
-
     baseboard_init();
 }
 
