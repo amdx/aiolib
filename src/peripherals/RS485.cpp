@@ -1,13 +1,13 @@
 /**
  * AMDX AIO arduino library
- * 
+ *
  * Copyright (C) 2019 Archimedes Exhibitions GmbH
- * All rights reserved. 
+ * All rights reserved.
  *
  * MIT License
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this
- * software and associated documentation files (the "Software"), to deal in the Software 
+ * software and associated documentation files (the "Software"), to deal in the Software
  * without restriction, including without limitation the rights to use, copy, modify, merge,
  * publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons
  * to whom the Software is furnished to do so, subject to the following conditions:
@@ -30,13 +30,13 @@
 namespace AIO {
 
 namespace {
-    const uint8_t RS485_DEFAULT_TX_EN_DELAY = 1; // [ms] time to enable (disable) transceiver before (after) sending
+    const uint16_t RS485_DEFAULT_TX_EN_DELAY = 1000; // [us] time to enable (disable) transceiver before (after) sending
 
     HardwareSerial& serial = Serial1;
 }
 
 RS485::RS485(uint8_t config)
-    : config_(config), txen_delay_(RS485_DEFAULT_TX_EN_DELAY)
+    : config_(config), tx_en_delay_(RS485_DEFAULT_TX_EN_DELAY)
 {
 }
 
@@ -57,9 +57,9 @@ void RS485::begin(uint32_t baud, uint32_t timeout)
     serial.setTimeout(timeout);
 }
 
-void RS485::set_txen_delay(uint8_t txen_delay)
+void RS485::set_tx_en_delay(uint16_t tx_en_delay)
 {
-    txen_delay_ = txen_delay;
+    tx_en_delay_ = tx_en_delay;
 }
 
 uint8_t RS485::read(uint8_t* dst_buf, uint8_t len)
@@ -70,10 +70,10 @@ uint8_t RS485::read(uint8_t* dst_buf, uint8_t len)
 uint8_t RS485::write(const uint8_t* src_buf, uint8_t len)
 {
     digitalWrite(RS485_TX_EN_PIN, HIGH);
-    delay(txen_delay_);
+    delayMicroseconds(tx_en_delay_);
     uint8_t num = serial.write(src_buf, len);
     serial.flush();
-    delay(txen_delay_);
+    delayMicroseconds(tx_en_delay_);
     digitalWrite(RS485_TX_EN_PIN, LOW);
 
     // discard sent bytes from RX buffer
