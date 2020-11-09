@@ -1,7 +1,7 @@
 {
     "name": "AMDX AIO",
     "keywords": "aio,aioxl",
-    "description": "Base library for AMDX AIO families controllers",
+    "description": "Base library for AMDX AIO family controllers",
     "authors":
     {
         "name": "Archimedes Exhibitions GmbH",

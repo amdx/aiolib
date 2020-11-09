@@ -1,6 +1,6 @@
 # AIO Arduino library
 
-Platform defines and peripheral helpers for the AMDX AIO family hardware.
+Platform defines and peripheral helpers for the AMDX AIO family controllers.
 
 ## Examples
 

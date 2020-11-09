@@ -1,7 +1,7 @@
 /**
  * AMDX AIO arduino library
  *
- * Copyright (C) 2019 Archimedes Exhibitions GmbH
+ * Copyright (C) 2019-2020 Archimedes Exhibitions GmbH
  * All rights reserved.
  *
  * MIT License
