@@ -87,6 +87,8 @@ const uint8_t ETH_NSOCKETS = 4;
 #define AIO_HAS_RS485
 const uint8_t RS485_RX_EN_PIN = 40; // active low
 const uint8_t RS485_TX_EN_PIN = 41;
+const uint8_t RS485_RX_PIN = 19;
+const uint8_t RS485_TX_PIN = 18;
 
 #else
 #error Unable to detect AIO platform
