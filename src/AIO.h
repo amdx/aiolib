@@ -93,6 +93,7 @@ const uint8_t RS485_TX_EN_PIN = 41;
 #endif
 
 void baseboard_init();
+void heartbeat();
 
 } // namespace AIO
 

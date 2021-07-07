@@ -37,4 +37,9 @@ void baseboard_init()
 #endif
 }
 
+void heartbeat()
+{
+    digitalWrite(LED_GREEN, !digitalRead(LED_GREEN));
+}
+
 }

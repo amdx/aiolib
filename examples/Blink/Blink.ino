@@ -40,6 +40,6 @@ void setup()
 
 void loop()
 {
-    digitalWrite(LED_GREEN, !digitalRead(LED_GREEN));
+    heartbeat();
     delay(100);
 }
