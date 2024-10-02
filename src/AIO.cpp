@@ -1,13 +1,13 @@
 /**
  * AMDX AIO arduino library
- * 
- * Copyright (C) 2019-2020 Archimedes Exhibitions GmbH
- * All rights reserved. 
+ *
+ * Copyright (C) 2019-2024 Archimedes Exhibitions GmbH
+ * All rights reserved.
  *
  * MIT License
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this
- * software and associated documentation files (the "Software"), to deal in the Software 
+ * software and associated documentation files (the "Software"), to deal in the Software
  * without restriction, including without limitation the rights to use, copy, modify, merge,
  * publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons
  * to whom the Software is furnished to do so, subject to the following conditions:
@@ -23,6 +23,7 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
+#include <avr/wdt.h>
 #include "AIO.h"
 
 namespace AIO {
@@ -40,6 +41,12 @@ void baseboard_init()
 void heartbeat()
 {
     digitalWrite(LED_GREEN, !digitalRead(LED_GREEN));
+}
+
+void soft_reset()
+{
+    wdt_enable(WDTO_15MS);
+    while (1);
 }
 
 }
